@@ -3,8 +3,8 @@ gituoso
 
 An improved git terminal
 
-Instalation
-----------
+Installation
+------------
 
 In terminal:
 
