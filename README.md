@@ -8,7 +8,7 @@ Installation
 
 In terminal:
 
-    git clone git@github.com:ahaasler/gituoso.git ~/.gituoso
+    git clone https://github.com/ahaasler/gituoso.git ~/.gituoso
 
 Add this to the end your .bashrc file
 
