@@ -5,6 +5,10 @@ source ~/.gituoso/git-components/git-prompt.sh
 # Enable completion
 source ~/.gituoso/git-components/git-completion.bash
 
+# Configuration
+export GITUOSO_USEARROWS=false
+export GITUOSO_RESETPROMPT=false
+
 # Color constants
 GIT_BLACK="\e[00;30m"
 GIT_BLACK_BOLD="\e[01;30m"
@@ -114,7 +118,7 @@ function git_branch_summary {
             if git_upstream_defined ; then
                 local up="^"
                 local down="v"
-                if $GIT_ADV_BASH_USEARROWS ; then
+                if $GITUOSO_USEARROWS ; then
                     # Unicode chars cause anomalies in reverse search
                     up="↑"
                     down="↓"
@@ -150,9 +154,10 @@ function git_status_summary {
     fi
 }
 
-export GIT_ADV_BASH_USEARROWS=false
-
 # Add git info to prompt
+if $GITUOSO_RESETPROMPT ; then
+    export PS1="\[\e[00;37m\]\u@\h:\w\\$ \[\e[0m\]"
+fi
 export PS1="${PS1}\[\$(git_status_color)\]\$(git_branch)$CLEAR";
 
 # Add git info to title bar
