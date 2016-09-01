@@ -54,12 +54,15 @@ typeof() {
   eval echo \$TYPEOF_$1
 }
 
+# Author: Pim van Riezen <pi@madscience.nl>
+# Modifications: Adrian Haasler <dev@adrianhaasler.com>
+# - Use /proc/sys/kernel/random/uuid to generate UUID
 new() {
   local class="$1"
   local cvar="$2"
   shift
   shift
-  local id=$(uuidgen | tr A-F a-f | sed -e "s/-//g")
+  local id=$(cat /proc/sys/kernel/random/uuid | tr A-F a-f | sed -e "s/-//g")
   eval TYPEOF_${id}=$class
   eval $cvar=$id
   local funclist
